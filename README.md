@@ -1,4 +1,4 @@
-# 🎯 Edo Language Text-to-Speech Model **Broken**
+# 🎯 Edo Language Text-to-Speech Model !!Broken!!
 
 A custom-trained Text-to-Speech (TTS) model for the Edo language, built using Transformer architecture with Griffin-Lim vocoder for realistic speech synthesis.
 
