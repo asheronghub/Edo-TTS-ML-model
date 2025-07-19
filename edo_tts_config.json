@@ -1,0 +1,103 @@
+{
+    "run_name": "edo_tts",
+    "run_description": "Edo language TTS model training",
+    "model": "tacotron2",
+    "print_step": 50,
+    "print_eval": false,
+    "mixed_precision": false,
+    "save_step": 1000,
+    "output_path": "outputs/",
+    
+    "dataset_config": {
+        "formatter": "ljspeech",
+        "meta_file_train": "metadata_train.csv",
+        "meta_file_val": "metadata_val.csv",
+        "path": "./",
+        "language": "en"
+    },
+    
+    "audio_config": {
+        "sample_rate": 22050,
+        "hop_length": 256,
+        "win_length": 1024,
+        "n_mels": 80,
+        "n_fft": 1024,
+        "preemphasis": 0.97,
+        "ref_level_db": 20,
+        "min_level_db": -100,
+        "power": 1.5,
+        "griffin_lim_iters": 60
+    },
+    
+    "model_config": {
+        "num_chars": 39,
+        "num_speakers": 1,
+        "r": 2,
+        "memory_size": 5,
+        "encoder_dim": 512,
+        "decoder_dim": 1024,
+        "attention_dim": 128,
+        "attention_location_n_filters": 32,
+        "attention_location_kernel_size": 31,
+        "prenet_dim": 256,
+        "postnet_dim": 512,
+        "postnet_num_layers": 5,
+        "decoder_num_layers": 2,
+        "encoder_num_layers": 3,
+        "dropout": 0.5,
+        "use_forward_attn": true,
+        "transition_agent": false,
+        "forward_attn_mask": true,
+        "location_attn": true,
+        "attention_norm": "sigmoid",
+        "prenet_dropout": true,
+        "separate_stopnet": true,
+        "stopnet_pos_weight": 10.0
+    },
+    
+    "training_config": {
+        "batch_size": 8,
+        "eval_batch_size": 4,
+        "num_loader_workers": 2,
+        "num_eval_loader_workers": 2,
+        "run_eval": true,
+        "test_delay_epochs": 5,
+        "epochs": 500,
+        "text_cleaner": "basic_cleaners",
+        "use_phonemes": false,
+        "phoneme_cache_path": null,
+        "precompute_num_workers": 2,
+        "get_attn_median": false,
+        "use_speaker_embedding": false
+    },
+    
+    "optimizer_config": {
+        "optimizer": "Adam",
+        "lr": 0.001,
+        "weight_decay": 0.000006,
+        "grad_clip": 5.0
+    },
+    
+    "lr_scheduler_config": {
+        "lr_scheduler": "StepLR",
+        "lr_scheduler_params": {
+            "step_size": 25000,
+            "gamma": 0.5
+        }
+    },
+    
+    "characters": {
+        "characters": " '-abdefghiklmnoprstuvwyzàáèéìíòóùú̀ẹọ",
+        "punctuations": "!'(),-.:;? ",
+        "phonemes": null,
+        "is_unique": true,
+        "is_sorted": true
+    },
+    
+    "test_sentences": [
+        "ẹ̀dó",
+        "amẹ odidọn",
+        "ebaan wẹ miẹn mwẹn a",
+        "ebe na si otọlọ"
+    ]
+}

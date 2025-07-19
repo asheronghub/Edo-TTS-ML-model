@@ -1,0 +1,119 @@
+{
+  "run_name": "edo_tts_tacotron2",
+  "run_description": "Tacotron2 TTS training for Edo language",
+  "model": "tacotron2",
+  
+  "audio": {
+    "fft_size": 1024,
+    "sample_rate": 22050,
+    "hop_length": 256,
+    "win_length": 1024,
+    "preemphasis": 0.97,
+    "ref_level_db": 20,
+    "min_level_db": -100,
+    "power": 1.5,
+    "griffin_lim_iters": 60,
+    "num_mels": 80,
+    "mel_fmin": 0,
+    "mel_fmax": 8000,
+    "do_trim_silence": true,
+    "trim_db": 45,
+    "signal_norm": true,
+    "symmetric_norm": false,
+    "max_norm": 4.0,
+    "clip_norm": true,
+    "stats_path": null
+  },
+
+  "datasets": [
+    {
+      "name": "edo_dataset",
+      "path": "./",
+      "meta_file_train": "metadata_train.csv",
+      "meta_file_val": "metadata_val.csv",
+      "language": "edo"
+    }
+  ],
+
+  "characters": {
+    "characters": " '-abdefghiklmnoprstuvwyzàáèéìíòóùú̀ẹọ",
+    "punctuations": "!'(),-.:;? ",
+    "phonemes": "",
+    "is_unique": true,
+    "is_sorted": true
+  },
+
+  "text_cleaner": "basic_cleaners",
+  "enable_eos_bos_chars": false,
+  "use_phonemes": false,
+  "phonemizer": null,
+  "phoneme_language": null,
+  "compute_input_seq_cache": false,
+  "text_cleaner_call_kwargs": {},
+  "add_blank": false,
+  "batch_group_size": 0,
+
+  "batch_size": 8,
+  "eval_batch_size": 4,
+  "num_loader_workers": 2,
+  "num_eval_loader_workers": 2,
+  "run_eval": true,
+  "test_delay_epochs": 5,
+  "epochs": 500,
+  
+  "optimizer": "Adam",
+  "lr": 0.001,
+  "weight_decay": 0.000006,
+  "grad_clip": 5.0,
+
+  "lr_scheduler": "StepLR",
+  "lr_scheduler_params": {
+    "step_size": 25000,
+    "gamma": 0.5
+  },
+
+  "use_speaker_embedding": false,
+  "num_speakers": 1,
+
+  "r": 2,
+  "memory_size": 5,
+  "attention_type": "original",
+  "windowing": false,
+  "use_forward_attn": true,
+  "forward_attn_mask": true,
+  "transition_agent": false,
+  "location_attn": true,
+  "attention_norm": "sigmoid",
+  "stopnet_pos_weight": 10,
+
+  "encoder_in_features": 512,
+  "decoder_in_features": 512,
+  "decoder_output_dim": 80,
+  "attention_dim": 128,
+  "attention_location_n_filters": 32,
+  "attention_location_kernel_size": 31,
+  "prenet_type": "original",
+  "prenet_dropout": true,
+  "prenet_dropout_at_inference": false,
+  "stopnet": true,
+
+  "postnet_dim": 512,
+  "postnet_num_layers": 5,
+
+  "output_path": "./outputs/",
+  "print_step": 25,
+  "print_eval": false,
+  "save_step": 1000,
+  "checkpoint_save_step": 1000,
+  "plot_step": 1000,
+  "log_model_step": 1000,
+
+  "mixed_precision": false,
+  
+  "test_sentences": [
+    "ẹ̀dó",
+    "amẹ odidọn", 
+    "ebaan wẹ miẹn mwẹn a",
+    "ebe na si otọlọ"
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "run_name": "edo_tts_mozilla",
+  "epochs": 500,
+  "batch_size": 4,
+  "eval_batch_size": 2,
+  "lr": 0.001,
+  "print_step": 10,
+  "save_step": 100,
+  "output_path": "outputs/",
+  "audio": {
+    "sample_rate": 22050,
+    "hop_length": 256,
+    "win_length": 1024,
+    "n_fft": 1024,
+    "n_mels": 80,
+    "preemphasis": 0.97,
+    "ref_level_db": 20,
+    "min_level_db": -100,
+    "power": 1.5,
+    "griffin_lim_iters": 60,
+    "mel_fmin": 0,
+    "mel_fmax": 8000,
+    "do_trim_silence": true,
+    "trim_db": 45,
+    "signal_norm": true,
+    "symmetric_norm": false,
+    "max_norm": 4.0,
+    "clip_norm": true,
+    "stats_path": null
+  },
+  "datasets": [
+    {
+      "name": "edo_mozilla",
+      "path": "./",
+      "meta_file_train": "metadata_train_mozilla.csv",
+      "meta_file_val": "metadata_val_mozilla.csv",
+      "language": "edo",
+      "formatter": "mozilla"
+    }
+  ],
+  "characters": {
+    "characters": " '-abdefghiklmnoprstuvwyzàáèéìíòóùú̀ẹọ",
+    "punctuations": "!'(),-.:;? ",
+    "phonemes": "",
+    "is_unique": true,
+    "is_sorted": true
+  },
+  "model": "tacotron2",
+  "text_cleaner": "basic_cleaners",
+  "use_phonemes": false,
+  "r": 2,
+  "optimizer": "Adam",
+  "weight_decay": 6e-06,
+  "grad_clip": 5.0,
+  "lr_scheduler": "StepLR",
+  "lr_scheduler_params": {
+    "step_size": 1000,
+    "gamma": 0.5
+  },
+  "test_sentences": [
+    "ẹ̀dó",
+    "amẹ odidọn",
+    "ebaan wẹ miẹn mwẹn a"
+  ]
+}

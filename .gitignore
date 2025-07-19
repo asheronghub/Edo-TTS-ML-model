@@ -1,0 +1,77 @@
+# Edo TTS Project - Git Ignore File
+
+# Large model files (these are too big for GitHub)
+*.pth
+*.onnx
+*.pkl
+
+# Audio files - exclude generated test files but keep original training data
+edo_synthesis_test_*.wav
+my_edo_speech_*.wav
+my_realistic_edo_*.wav
+realistic_edo_*.wav
+
+# Mel-spectrogram data files
+*.npy
+
+# Analysis and visualization files
+*_analysis.png
+*_mel.png
+edo_tts_training_curves.png
+edo_training_monitor.png
+
+# Python cache and temporary files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+.env
+.venv
+env/
+venv/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# macOS system files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Output directories
+outputs/
+logs/
+runs/
+checkpoints/
+
+# Data preprocessing temporary files
+*.csv.backup
+*.json.backup
+
+# Keep original training data but exclude copies
+# (Uncomment these if you want to exclude all audio files)
+# *.wav
+# *.mp3
+# *.m4a
+
+# Model training temporary files
+*.lock
+*.pid
+
+# System and editor files
+Thumbs.db
+*~
+*.orig
